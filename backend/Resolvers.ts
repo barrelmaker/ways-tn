@@ -1,36 +1,36 @@
-import { interests, plans } from "./dataset";
+import { manager } from "./data-source";
+import { Interest } from "./entity/Interest";
+import { Plan } from "./entity/Plan";
 
 const Resolvers = {
   Query: {
-    getAllPlans: () => plans,
-    getPlan: (_: any, args: any) => {
-      //get the object that contains the specified ID.
-      return plans.find((plan) => plan.id === args.id);
+    getAllPlans: async () => {
+      return await manager.find(Plan);
     },
-    getInterests: (_: any, args: any) => {
-      //get the object that contains the specified ID.
-      return interests.filter((interest) => interest.planId === args.planId);
+    getPlan: async (_: any, args: any) => {
+      return await manager.find(Plan, { where: { id: args.id } });
+    },
+    getInterests: async (_: any, args: any) => {
+      return await manager.find(Interest, { where: { planId: args.planId } });
     },
   },
 
   Mutation: {
-    addPlan: (_: any, args: any) => {
-      const newPlan = {
-        id: plans.length + 1,
-        details: args.details,
-        user: args.user,
-      };
-      plans.push(newPlan);
-      return newPlan;
+    addPlan: async (_: any, args: any) => {
+      return await manager.save(
+        manager.create(Plan, {
+          details: args.details,
+          user: args.user,
+        })
+      );
     },
-    addInterest: (_: any, args: any) => {
-      const newInterest = {
-        id: interests.length + 1,
-        planId: Number(args.planId),
-        user: args.user,
-      };
-      interests.push(newInterest);
-      return newInterest;
+    addInterest: async (_: any, args: any) => {
+      return await manager.save(
+        manager.create(Interest, {
+          planId: Number(args.planId),
+          user: args.user,
+        })
+      );
     },
   },
 };
