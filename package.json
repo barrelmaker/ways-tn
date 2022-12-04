@@ -3,8 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "ways": "concurrently \"brew services start postgresql@14\" \"npm run dev\" \"npx nodemon start\"",
-    "stop": "concurrently \"brew services stop postgresql@14\"",
+    "ways": "concurrently \"npm run dev\" \"npx nodemon start\"",
     "dev": "cd frontend && vite",
     "build": "cd frontend && tsc && vite build",
     "preview": "cd frontend && vite preview",
