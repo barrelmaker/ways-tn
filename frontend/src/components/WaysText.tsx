@@ -1,7 +1,6 @@
-import { Typography, TypographyTypeMap } from "@mui/material";
+import { Typography, TypographyProps } from "@mui/material";
 
-interface Props {
-  variant?: TypographyTypeMap["props"]["variant"];
+interface Props extends TypographyProps {
   children: React.ReactNode;
 }
 

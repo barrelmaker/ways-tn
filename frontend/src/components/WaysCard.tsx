@@ -1,10 +1,10 @@
-import { Card, useTheme } from "@mui/material";
+import { Card, CardProps, useTheme } from "@mui/material";
 
-interface Props {
+interface Props extends CardProps {
   children: React.ReactNode;
 }
 
-const WaysCard: React.FC<Props> = ({ children }: Props) => {
+const WaysCard: React.FC<Props> = ({ children, ...rest }: Props) => {
   const theme = useTheme();
   return (
     <Card
@@ -17,6 +17,7 @@ const WaysCard: React.FC<Props> = ({ children }: Props) => {
         flexDirection: "column",
         gap: theme.spacing(4),
       }}
+      {...rest}
     >
       {children}
     </Card>

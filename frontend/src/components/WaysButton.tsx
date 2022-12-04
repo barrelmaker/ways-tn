@@ -1,13 +1,12 @@
-import { Button } from "@mui/material";
+import { Button, ButtonProps } from "@mui/material";
 
-interface Props {
+interface Props extends ButtonProps {
   children: React.ReactNode;
-  onClick: VoidFunction;
 }
 
-const WaysButton: React.FC<Props> = ({ children, onClick }: Props) => {
+const WaysButton: React.FC<Props> = ({ children, onClick, ...rest }: Props) => {
   return (
-    <Button variant={"contained"} color={"success"} onClick={onClick}>
+    <Button variant={"contained"} color={"success"} onClick={onClick} {...rest}>
       {children}
     </Button>
   );

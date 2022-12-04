@@ -1,6 +1,6 @@
-import { Box, Modal } from "@mui/material";
+import { Box, Modal, ModalProps } from "@mui/material";
 
-interface Props {
+interface Props extends Omit<ModalProps, "children"> {
   children: React.ReactNode;
   open: boolean;
   onClose: VoidFunction;

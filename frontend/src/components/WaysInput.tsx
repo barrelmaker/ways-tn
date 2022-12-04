@@ -1,18 +1,15 @@
-import { TextField } from "@mui/material";
+import { TextField, TextFieldProps } from "@mui/material";
 
-interface Props {
-  onChange:
-    | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-    | undefined;
-}
+type Props = TextFieldProps;
 
-const WaysInput: React.FC<Props> = ({ onChange }: Props) => {
+const WaysInput: React.FC<Props> = ({ onChange, ...rest }: Props) => {
   return (
     <TextField
       id="outlined-basic"
       label="Outlined"
       variant="outlined"
       onChange={onChange}
+      {...rest}
     />
   );
 };
