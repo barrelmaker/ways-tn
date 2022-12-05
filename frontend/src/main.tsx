@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 
 const client = new ApolloClient({
-  uri: import.meta.env.DEV
+  uri: import.meta.env.PROD
     ? import.meta.env.VITE_HASURA_GQL_API
     : `http://localhost:${import.meta.env.VITE_GQL_PORT}/graphql`,
   cache: new InMemoryCache(),
